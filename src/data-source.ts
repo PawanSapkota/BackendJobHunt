@@ -5,13 +5,14 @@ import {Category} from './entity/Category'
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
+    host: "dpg-chqrrnm4dad3eom0rbh0-a.oregon-postgres.render.com",
     port: 5432,
-    username: "postgres",
-    password: "26462264",
-    database: "HubitStudentInfo",
+    username: "hubit_data_user",
+    password: "A5aDlEyvsr1UAEw7S16IVRXwpFRTRfVg",
+    database: "hubit_data",
     synchronize: true,
     logging: false,
+    ssl:true,
     entities: [
         'src/entity/**/*.ts','./entity/**/*.ts',StudentInfo,Category
     ], 
