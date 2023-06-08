@@ -26,10 +26,17 @@ export class StudentInfo{
     gurdain_no:string
 
     @Column()
-    course:string
+    Course:string
 
     @Column()
     status:string
+
+    @Column()
+    Stage:string
+
+    @Column()
+    Shift:string
+
 
     @Column({
         nullable:true
@@ -41,23 +48,39 @@ export class StudentInfo{
     })
     schoolCourseTaken:string
 
+    @Column()
+    Level_Of_Education:string
 
     @Column()
-    Stage:string
+    refered_by:string
 
     @Column()
-    Level:string
-
-    @Column()
-    Referred:string
+    referal_contact_no:string
 
     @Column()
     SourceOfInformation:string
 
-    @ManyToOne(()=>Category,(category)=>category.student_type,{
-        eager:true,cascade:true
+    @Column()
+    Category_name:string
+
+    @Column()
+    discount:string
+
+    @Column()
+    Gender:string
+
+    @Column()
+    image:string
+
+    @Column({
+        nullable:true
     })
-    student_category:Category
+    Date:string
+
+    // @ManyToOne(()=>Category,(category)=>category.student_type,{
+    //     eager:true,cascade:true
+    // })
+    // student_category:Category
 
     @CreateDateColumn()
     createdAt:Date

@@ -10,10 +10,10 @@ export class Category{
     @Column()
     Category_name:string
 
-    @OneToMany(()=>StudentInfo,(product)=>product.student_category,{
+    // @OneToMany(()=>StudentInfo,(product)=>product.student_category,{
         
-    })
-    student_type:StudentInfo[]
+    // })
+    // student_type:StudentInfo[]
 
     @CreateDateColumn()
     createdAt:Date

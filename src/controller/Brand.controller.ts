@@ -15,7 +15,7 @@ export const getBrandHandler = async (
 
     let Brand= await BrandRepo.find({
         order:{
-            id:'ASC'
+            createdAt:'ASC'
         }
     });
     console.log(Brand)
@@ -37,10 +37,10 @@ export const getBrandHandler = async (
   )=>{
     try {
         console.log(req.body,req.file);
-let category= new Category();
-category.Category_name=req.body.Category_name;
-req.body.student_category=category;
-
+        // /let category= new Category();
+// category.Category_name=req.body.Category_name;
+// req.body.student_category=category;
+     req.body.image=req.file.filename
         await BrandRepo.save(req.body).then(result=>{
             res.status(200).json({
                 message: "brand has been added",
