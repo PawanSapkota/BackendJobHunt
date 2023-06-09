@@ -19,6 +19,17 @@ export class OtakuVoters{
     @Column()
     contact:string
 
+    @Column({
+        nullable:true
+    })
+    Cosplayer:string
+    @Column({
+        type:'jsonb',
+        array:false,
+        default:() => "'[]'",
+        nullable:true,
+    })
+    VoteTo:Array<{name:string,infoId:string}>
     // @OneToMany(()=>StudentInfo,(product)=>product.student_category,{
         
     // })

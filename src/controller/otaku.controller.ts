@@ -35,10 +35,12 @@ export const getBrandHandler = async (
   )=>{
     try {
         console.log(req.body,req.file);
-        let Brand=await BrandRepo.findOneBy({contact:req.body.contact});
+        let Brand=await BrandRepo.findOneBy({contact:req.body.contact,email:req.body.email});
         if(Brand){
-            return next(new AppError(404,"User with this number already exist" ));
+            return next(new AppError(404,"User with this number and email already exist" ));
         }
+        req.body.Cosplayer=req.body.VoteTo.id;
+        req.body.VoteTo=[req.body.VoteTo]
         // /let category= new Category();
 // category.Category_name=req.body.Category_name;
 // req.body.student_category=category;
