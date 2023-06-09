@@ -2,6 +2,8 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 import {StudentInfo} from './entity/Brand'
 import {Category} from './entity/Category'
+import {OtakuVoters} from './entity/OtakuVoters'
+
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -14,12 +16,12 @@ export const AppDataSource = new DataSource({
     logging: false,
     ssl:true,
     entities: [
-        'src/entity/**/*.ts','./entity/**/*.ts',StudentInfo,Category
+        'src/entity/**/*.ts','./entity/**/*.ts',OtakuVoters,StudentInfo,Category
     ], 
     migrations: [
         'src/migration/**/*.ts'
     ],
     subscribers: [
-        'src/subscrib/**/*.ts'
+        'src/subscribe/**/*.ts'
     ],
 })

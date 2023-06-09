@@ -10,6 +10,8 @@ import * as cors from 'cors'
 import * as morgan from 'morgan'
 // routes import 
 import BrandRoute from './Routes/Brand.routes';
+import OtakuRoute from './Routes/OtakuVoters.routes';
+
 // import CustomerRoute from './Routes/Customer.routes';
 // import PaymentRoute from './Routes/Payment.routes';
 
@@ -61,6 +63,8 @@ app.use('/doc',swaggerUiExpress.serve,swaggerUiExpress.setup(swaggerDocs));
 
     app.use('/studentinfo',BrandRoute);
     app.use('/category',CategoryRoute);
+    app.use('/otakuvoters',OtakuRoute);
+
     // app.use('/customer',CustomerRoute);
     // app.use('/payment',PaymentRoute);
     // app.use('/product',ProductRoute);
