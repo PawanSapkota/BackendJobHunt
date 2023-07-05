@@ -1,82 +1,67 @@
 import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn, OneToMany, ManyToOne} from 'typeorm';
-import { Category } from './Category';
+// import { Category } from './Category';
 
 @Entity()
-export class StudentInfo{
+export class JobInfo{
 
     @PrimaryGeneratedColumn('uuid')
     id:string
 
     @Column()
-    name:string
+    title:string
 
     @Column()
-    contact_no:string
+    subtitle:string
 
     @Column()
-    address:string
+    company_name:string
 
     @Column()
-    email:string
+    salaryRange:string
 
     @Column()
-    gurdain_name:string
+    description:string
 
     @Column()
-    gurdain_no:string
-
-    @Column()
-    Course:string
-
-    @Column()
-    status:string
-
-    @Column()
-    Stage:string
-
-    @Column()
-    Shift:string
-
+    deadline:string
 
     @Column({
-        nullable:true
+        type:'jsonb',
+        array:false,
+        default:() => "'[]'",
+        nullable:true,
     })
-    schoolName:string
+    jobtype:Array<{title:string}>
 
     @Column({
-        nullable:true
+        type:'jsonb',
+        array:false,
+        default:() => "'[]'",
+        nullable:true,
     })
-    schoolCourseTaken:string
+    category:Array<{title:string}>
 
-    @Column()
-    Level_Of_Education:string
+    @Column({
+        type:'jsonb',
+        array:false,
+        default:() => "'[]'",
+        nullable:true,
+    })
+    skils:Array<{title:string}>
 
-    @Column()
-    refered_by:string
+    @Column({
+        type:'jsonb',
+        array:false,
+        default:() => "'[]'",
+        nullable:true,
+    })
+    benefits:Array<{title:string}>
 
-    @Column()
-    referal_contact_no:string
-
-    @Column()
-    SourceOfInformation:string
-
-    @Column()
-    Category_name:string
-
-    @Column()
-    discount:string
-
-    @Column()
-    Gender:string
+   @Column()
+   location:string
 
     @Column()
     image:string
-
-    @Column({
-        nullable:true
-    })
-    Date:string
-
     // @ManyToOne(()=>Category,(category)=>category.student_type,{
     //     eager:true,cascade:true
     // })

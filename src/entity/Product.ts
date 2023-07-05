@@ -1,5 +1,5 @@
 import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn, ManyToOne, OneToMany} from 'typeorm';
-import { StudentInfo } from './Brand';
+import { JobInfo } from './Brand';
 import { Category } from './Category';
 import { Sales } from './Sales';
 

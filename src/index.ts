@@ -10,7 +10,7 @@ import * as cors from 'cors'
 import * as morgan from 'morgan'
 // routes import 
 import BrandRoute from './Routes/Brand.routes';
-import OtakuRoute from './Routes/OtakuVoters.routes';
+// import OtakuRoute from './Routes/OtakuVoters.routes';
 
 // import CustomerRoute from './Routes/Customer.routes';
 // import PaymentRoute from './Routes/Payment.routes';
@@ -20,7 +20,7 @@ import OtakuRoute from './Routes/OtakuVoters.routes';
 // import BookingRoute from './Routes/Booking.routes';
 // import UsersRoute from './Routes/User.routes';
 
-import CategoryRoute from './Routes/Category.routes';
+// import CategoryRoute from './Routes/Category.routes';
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
 // import SENDMAIL from './Utils/Mail';
@@ -61,9 +61,9 @@ app.use('/doc',swaggerUiExpress.serve,swaggerUiExpress.setup(swaggerDocs));
         })
     })
 
-    app.use('/studentinfo',BrandRoute);
-    app.use('/category',CategoryRoute);
-    app.use('/otakuvoters',OtakuRoute);
+    app.use('/jobInfo',BrandRoute);
+    // app.use('/category',CategoryRoute);
+    // app.use('/otakuvoters',OtakuRoute);
 
     // app.use('/customer',CustomerRoute);
     // app.use('/payment',PaymentRoute);

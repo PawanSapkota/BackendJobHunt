@@ -1,9 +1,9 @@
 import { AppDataSource } from '../data-source'
 import { NextFunction, Request, Response } from "express"
-import { StudentInfo} from "../entity/Brand"
+import {JobInfo } from "../entity/Brand"
 import AppError from '../Utils/AppError';
 import {Category} from '../entity/Category'
-const BrandRepo = AppDataSource.getRepository(StudentInfo);
+const BrandRepo = AppDataSource.getRepository(JobInfo);
 const CategoryRepo = AppDataSource.getRepository(Category);
 
 export const getBrandHandler = async (
@@ -30,6 +30,30 @@ export const getBrandHandler = async (
     }
   };
 
+
+  export const getSingleBrandHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+
+    let Brand= await BrandRepo.findOneBy({
+     id:  req.params.id
+    
+    });
+    console.log(Brand)
+      res.status(200).json({
+        status: 'success',
+        Brand
+        
+      });
+    } catch (err: any) {
+      next(err);
+    }
+  };
+
+
   export const postBrandHandler=async(
     req:Request,
     res:Response,
@@ -43,7 +67,7 @@ export const getBrandHandler = async (
      req.body.image=req.file.filename
         await BrandRepo.save(req.body).then(result=>{
             res.status(200).json({
-                message: "brand has been added",
+                message: "job has been added",
                 result
             })
         }).catch(err=>{

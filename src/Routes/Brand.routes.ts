@@ -1,6 +1,6 @@
 
 import {Router} from 'express';
-import { getBrandHandler,postBrandHandler,deleteBrand,updateBrandHandler } from '../controller/Brand.controller';
+import { getBrandHandler,postBrandHandler,deleteBrand,updateBrandHandler, getSingleBrandHandler } from '../controller/Brand.controller';
 import {upload} from '../Utils/UploadFile'
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -10,53 +10,44 @@ const router = Router();
  * @swagger
  * components:
  *   schemas:
- *     studentinfoDto:
+ *     jobInfoDto:
  *         type: object
  *         properties: 
- *           name:
+ *           title:
  *             type: string
  *             description: this is for name of the category
- *           contact_no:
+ *           subtitle:
  *             type: string
  *             description: this is for name of the category
- *           address:
+ *           company_name:
  *             type: string
  *             description: this is for name of the category
- *           email:
+ *           salaryRange:
  *             type: string
  *             description: this is for name of the category
- *           gurdain_name:
+ *           description:
  *             type: string
  *             description: this is for name of the category
- *           gurdain_no:
+ *           deadline:
  *             type: string
  *             description: this is for name of the category 
- *           course:
+ *           jobtype:
+ *             type: array
+ *             description: this is for name of the category
+ *           category:
+ *             type: array
+ *             description: this is for name of the category
+ *           skils:
  *             type: string
  *             description: this is for name of the category
- *           status:
+ *           benefits:
+ *             type: array
+ *             description: this is for name of the category
+ *           location:
  *             type: string
  *             description: this is for name of the category
- *           Stage:
- *             type: string
- *             description: this is for name of the category
- *           Level:
- *             type: string
- *             description: this is for name of the category
- *           Referred:
- *             type: string
- *             description: this is for name of the category
- *           SourceOfInformation:
- *             type: string
- *             description: this is for name of the category
- *           Category_name:
- *             type: string
- *             description: this is for name of the category
- *           schoolName:
- *             type: string
- *             description: this is for name of the category
- *           schoolCourseTaken:
- *             type: string
+ *           image:
+ *             type: file
  *             description: this is for name of the category
  * 
  */
@@ -64,36 +55,36 @@ const router = Router();
 /**
  * @swagger
  * tags:
- *   name: studentinfo Record
+ *   name: JobInfo Record
  *   description: Record of all user CRUD
  * 
  */
 
 /**
  * @swagger
- * /studentinfo/:
+ * /jobInfo/:
  *  get:
  *     summary: Use to request all user Record
- *     tags: [studentinfo Record]
+ *     tags: [JobInfo Record]
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  post:
  *     summary: used to add new studentinfo
- *     tags: [studentinfo Record]
+ *     tags: [JobInfo Record]
  *     requestBody:
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema: 
- *             $ref: '#/components/schemas/studentinfoDto'
+ *             $ref: '#/components/schemas/jobInfoDto'
  *     responses:
  *         '200':
  *           description: A sucessfull response
  * 
- * /studentinfo/{id}:
+ * /jobInfo/{id}:
  *  patch:
  *     summary: used to update studentinfos
- *     tags: [studentinfo Record]
+ *     tags: [JobInfo Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -105,13 +96,26 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/studentinfoDto'
+ *             $ref: '#/components/schemas/jobInfoDto'
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  delete:
  *     summary: Use to request all user Record
- *     tags: [studentinfo Record]
+ *     tags: [JobInfo Record]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true 
+ *         description: this is for id
+ *     responses:
+ *        '200':
+ *          description: A sucessfull response
+ *  get:
+ *     summary: Use to request all user Record
+ *     tags: [JobInfo Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -129,10 +133,11 @@ router
   .post(upload.single('image'), postBrandHandler)
   
   .get(getBrandHandler)
-//   .delete(getPostHandler);
+//   .delete(getPostHancleadler);
 
 router
   .route('/:id')
+  .get(getSingleBrandHandler)
   .patch(upload.single('image'),updateBrandHandler)
   .delete(deleteBrand)
   export default router;

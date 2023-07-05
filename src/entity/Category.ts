@@ -1,5 +1,5 @@
 import {Entity,Column,CreateDateColumn,PrimaryGeneratedColumn, OneToMany} from 'typeorm'
-import { StudentInfo } from './Brand'
+// import { StudentInfo } from './Brand'
 
 @Entity()
 export class Category{

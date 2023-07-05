@@ -2,13 +2,13 @@ import { NextFunction, Request, Response } from "express";
 import AppError from "../Utils/AppError";
 import { AppDataSource } from "../data-source";
 import { Product } from '../entity/Product';
-import { StudentInfo } from '../entity/Brand';
+import { JobInfo } from '../entity/Brand';
 import { Category } from '../entity/Category';
 
 
 
 const ProductRepo = AppDataSource.getRepository(Product);
-const BrandRepo = AppDataSource.getRepository(StudentInfo);
+const BrandRepo = AppDataSource.getRepository(JobInfo);
 const CategoryRepo = AppDataSource.getRepository(Category);
 
 
