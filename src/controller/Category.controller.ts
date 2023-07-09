@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import AppError from "../Utils/AppError";
 import { AppDataSource } from "../data-source";
-import {Category} from '../entity/Category';
+import {Skills} from '../entity/Category';
 export interface RequestCustom extends Request
 {
     User: any;
 }
-const CategoryRepo= AppDataSource.getRepository(Category)
+const CategoryRepo= AppDataSource.getRepository(Skills)
 export const getCategory=async (
     req:RequestCustom,
     res:Response,
@@ -16,7 +16,7 @@ export const getCategory=async (
         console.log(req.User)
         await CategoryRepo.find().then((result:object)=>{
             res.status(200).json({
-                message: "category has been added",
+                message: "skill has been added",
                 result
             })
         }).catch(err=>{
@@ -24,7 +24,6 @@ export const getCategory=async (
         });
         
     } catch (error) {
-        console.log(error,"gf")
         next (new AppError(error.statusCode,error.message))
     }
 }
@@ -38,7 +37,7 @@ export const postCategoryHandler=async (
         try {
             await CategoryRepo.save(req.body).then((result:object)=>{
                 res.status(200).json({
-                    message: "category has been added",
+                    message: "skill has been added",
                     result
                 })
             }).catch(err=>{
@@ -62,7 +61,7 @@ export const patchCategoryHandler=async (
                 Object.assign(Category,req.body);
                 await CategoryRepo.save(Category).then((result:object)=>{
                     res.status(200).json({
-                        message: "category has been updated",
+                        message: "skill has been updated",
                         result
                     })
                 }).catch((err:any)=>{
@@ -81,11 +80,11 @@ export const deleteCategoryHandler=async (
                 try {
                     let Category=await CategoryRepo.findOneBy({id:req.params.id});
                     if(!Category){
-                        return next(new AppError(404,"cateory with this di doesn't exist"))
+                        return next(new AppError(404,"skill with this di doesn't exist"))
                     }
                     await CategoryRepo.remove(Category).then((result:object)=>{
                         res.status(200).json({
-                            message: "category has been updated",
+                            message: "skill has been updated",
                             result
                         })
                     }).catch((err:any)=>{

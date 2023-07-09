@@ -2,9 +2,9 @@ import { AppDataSource } from '../data-source'
 import { NextFunction, Request, Response } from "express"
 import {JobInfo } from "../entity/Brand"
 import AppError from '../Utils/AppError';
-import {Category} from '../entity/Category'
+import {Skills} from '../entity/Category'
 const BrandRepo = AppDataSource.getRepository(JobInfo);
-const CategoryRepo = AppDataSource.getRepository(Category);
+const CategoryRepo = AppDataSource.getRepository(Skills);
 
 export const getBrandHandler = async (
     req: Request,

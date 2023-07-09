@@ -20,7 +20,7 @@ import BrandRoute from './Routes/Brand.routes';
 // import BookingRoute from './Routes/Booking.routes';
 // import UsersRoute from './Routes/User.routes';
 
-// import CategoryRoute from './Routes/Category.routes';
+import CategoryRoute from './Routes/Category.routes';
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
 // import SENDMAIL from './Utils/Mail';
@@ -48,6 +48,7 @@ const swaggerOptions={
            servers:[4002]
        }
     },
+    // apis:["./routes/*.{ts}","./Routes/*.{ts}","./**/*.{ts}","build/routes/*.js","build/**/*.js","build/Routes/*.js",]
      apis:["./routes/*.ts","./Routes/*.ts","./**/*.ts",'index.ts',`${__dirname}/routes/*.routes.ts`,`${__dirname}/Routes/*.routes.ts`]
    }
 const swaggerDocs=swaggerJsDoc(swaggerOptions);
@@ -62,7 +63,7 @@ app.use('/doc',swaggerUiExpress.serve,swaggerUiExpress.setup(swaggerDocs));
     })
 
     app.use('/jobInfo',BrandRoute);
-    // app.use('/category',CategoryRoute);
+    app.use('/skils',CategoryRoute);
     // app.use('/otakuvoters',OtakuRoute);
 
     // app.use('/customer',CustomerRoute);

@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { JobInfo } from "./entity/Brand"
+import { Skills } from "./entity/Category"
 // import {StudentInfo} from './entity/Brand'
 // import {Category} from './entity/Category'
 // import {OtakuVoters} from './entity/OtakuVoters'
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     ssl:true,
     entities: [
         // 'src/entity/**/*.ts','./entity/**/*.ts'
-        JobInfo
+        JobInfo,Skills
     ], 
     migrations: [
         'src/migration/**/*.ts'

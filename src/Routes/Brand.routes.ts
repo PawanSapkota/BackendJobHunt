@@ -140,4 +140,6 @@ router
   .get(getSingleBrandHandler)
   .patch(upload.single('image'),updateBrandHandler)
   .delete(deleteBrand)
+
+  
   export default router;

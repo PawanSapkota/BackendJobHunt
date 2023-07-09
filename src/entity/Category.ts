@@ -2,13 +2,16 @@ import {Entity,Column,CreateDateColumn,PrimaryGeneratedColumn, OneToMany} from '
 // import { StudentInfo } from './Brand'
 
 @Entity()
-export class Category{
+export class Skills{
 
     @PrimaryGeneratedColumn('uuid')
     id:string
 
     @Column()
-    Category_name:string
+    title:string
+
+    @Column()
+    type:string
 
     // @OneToMany(()=>StudentInfo,(product)=>product.student_category,{
         
