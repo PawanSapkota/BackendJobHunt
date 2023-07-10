@@ -1,7 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { JobInfo } from "./entity/Brand"
-import { Skills } from "./entity/Category"
+import { Skills } from "./entity/Skills"
 // import {StudentInfo} from './entity/Brand'
 // import {Category} from './entity/Category'
 // import {OtakuVoters} from './entity/OtakuVoters'

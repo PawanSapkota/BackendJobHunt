@@ -1,97 +1,110 @@
-import { NextFunction, Request, Response } from "express";
 import AppError from "../Utils/AppError";
 import { AppDataSource } from "../data-source";
-import {Skills} from '../entity/Category';
-export interface RequestCustom extends Request
-{
-    User: any;
-}
-const CategoryRepo= AppDataSource.getRepository(Skills)
-export const getCategory=async (
-    req:RequestCustom,
-    res:Response,
-    next:NextFunction,
-)=>{
-    try {
-        console.log(req.User)
-        await CategoryRepo.find().then((result:object)=>{
-            res.status(200).json({
-                message: "skill has been added",
-                result
-            })
-        }).catch(err=>{
-            next(new AppError(err.statusCode,err.message))
-        });
-        
-    } catch (error) {
-        next (new AppError(error.statusCode,error.message))
-    }
-}
+import {Category} from '../entity/Category';
+import {Response,Request,NextFunction} from 'express';
 
-export const postCategoryHandler=async (
+const CustomerRepo=AppDataSource.getRepository(Category);
+
+export const getCustomerHandler=async(
     req:Request,
     res:Response,
     next:NextFunction
-    )=>{
-        console.log(req.body)
-        try {
-            await CategoryRepo.save(req.body).then((result:object)=>{
-                res.status(200).json({
-                    message: "skill has been added",
-                    result
-                })
-            }).catch(err=>{
-                next(new AppError(err.statusCode,err.message))
-            });
-        } catch (error) {
-            next (new AppError(error.statusCode,error.message))
-        }
+)=>{
+    try {
+        await CustomerRepo.find().then(result=>{
+            res.status(200).json({
+                message:'customer has been fetched',
+                result
+            })
+        }).catch(err=>{
+            next (new AppError(500,err.message))
+        })
+    } catch (error) {
+        next(new AppError(error.statusCode,error.message))
     }
-
-export const patchCategoryHandler=async (
-        req:Request,
-        res:Response,
-        next:NextFunction
-        )=>{
-            try {
-                let Category=await CategoryRepo.findOneBy({id:req.params.id});
-                if(!Category){
-                    return next(new AppError(404,"cateory with this di doesn't exist"))
-                }
-                Object.assign(Category,req.body);
-                await CategoryRepo.save(Category).then((result:object)=>{
-                    res.status(200).json({
-                        message: "skill has been updated",
-                        result
-                    })
-                }).catch((err:any)=>{
-                    next(new AppError(err.statusCode,err.message))
-                });
-            } catch (error:any) {
-                next (new AppError(error.statusCode,error.message))
-            }
 }
 
-export const deleteCategoryHandler=async (
-            req:Request,
-            res:Response,
-            next:NextFunction
-            )=>{
-                try {
-                    let Category=await CategoryRepo.findOneBy({id:req.params.id});
-                    if(!Category){
-                        return next(new AppError(404,"skill with this di doesn't exist"))
-                    }
-                    await CategoryRepo.remove(Category).then((result:object)=>{
-                        res.status(200).json({
-                            message: "skill has been updated",
-                            result
-                        })
-                    }).catch((err:any)=>{
-                        next(new AppError(err.statusCode,err.message))
-                    });
-                } catch (error:any) {
-                    next (new AppError(error.statusCode,error.message))
-                }
-            
+export const getSingleCustomerHandler=async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    try {
+        await CustomerRepo.findOneBy({id:req.params.id}).then(result=>{
+            res.status(200).json({
+                message:'customer has been fetched',
+                result
+            })
+        }).catch(err=>{
+            next (new AppError(500,err.message))
+        })
+    } catch (error) {
+        next(new AppError(error.statusCode,error.message))
+    }
+}
+export const PostustomerHandler=async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    try {
+   
+        await CustomerRepo.save(req.body).then(result=>{
+            res.status(200).json({
+                message:'customer has been updated',
+                result
+            })
+        }).catch(err=>{
+            next (new AppError(500,err.message))
+        })
+    } catch (error) {
+        next(new AppError(error.statusCode,error.message))
+    }
+}
+
+export const updateCustomerHandler=async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    try {
+        let customer= await CustomerRepo.findOneBy({id:req.params.id});
+        if(!customer){
+            return next(new AppError(404,"customer with this id not found"));
+        }
+        Object.assign(customer,req.body)
+        await CustomerRepo.save(customer).then(result=>{
+            res.status(200).json({
+                message:'customer has been updated',
+                result
+            })
+        }).catch(err=>{
+            next (new AppError(500,err.message))
+        })
+    } catch (error) {
+        next(new AppError(error.statusCode,error.message))
+    }
+}
+
+export const deleteCustomerHandler=async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    try {
+        let customer= await CustomerRepo.findOneBy({id:req.params.id});
+        if(!customer){
+            return next(new AppError(404,"customer with this id not found"));
+        }
+        await CustomerRepo.remove(customer).then(result=>{
+            res.status(200).json({
+                message:'customer has been deleted',
+                result
+            })
+        }).catch(err=>{
+            next (new AppError(500,err.message))
+        })
+    } catch (error) {
+        next(new AppError(error.statusCode,error.message))
+    }
 }

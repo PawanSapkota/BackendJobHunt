@@ -2,7 +2,7 @@ import { AppDataSource } from '../data-source'
 import { NextFunction, Request, Response } from "express"
 import {JobInfo } from "../entity/Brand"
 import AppError from '../Utils/AppError';
-import {Skills} from '../entity/Category'
+import {Skills} from '../entity/Skills'
 const BrandRepo = AppDataSource.getRepository(JobInfo);
 const CategoryRepo = AppDataSource.getRepository(Skills);
 

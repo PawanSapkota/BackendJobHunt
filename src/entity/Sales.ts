@@ -1,6 +1,6 @@
 import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn,UpdateDateColumn, OneToMany, ManyToOne, ManyToMany, JoinTable} from 'typeorm';
 import { Product } from './Product';
-import { Customer } from './Customer';
+import { Category } from './Category';
 
 
 @Entity() 
@@ -53,8 +53,8 @@ export class Sales{
     // @ManyToOne(()=>Product,(Product)=>Product.sales)
     // productId:Product[]
 
-    @ManyToOne(()=>Customer,(Customer)=>Customer.salesId,{
-        eager:false
-    })
-    CustomerId:Customer
+    // @ManyToOne(()=>Customer,(Customer)=>Customer.salesId,{
+    //     eager:false
+    // })
+    // CustomerId:Customer
 }

@@ -1,60 +1,62 @@
-import {Router} from 'express'
-import {getCategory,postCategoryHandler,deleteCategoryHandler,patchCategoryHandler} from '../controller/Category.controller';
-import {Auth} from '../Utils/ValidateRoutes'
-const router = Router();
+import {Router} from 'express';
+import {deleteCustomerHandler, getCustomerHandler, getSingleCustomerHandler,PostustomerHandler,updateCustomerHandler} from '../controller/Category.controller';
+const router=Router();
+
 
 /**
  * @swagger
  * components:
- *   securitySchemes:
- *     BasicAuth: 
- *       type: http
- *       scheme: bearer
  *   schemas:
- *     skilsDto:
+ *     categoryDto:
  *         type: object
  *         properties: 
- *           title:
+ *           name:
  *             type: string
- *             description: this is for name of the skils
- *           type:
+ *             description: this is for name of the category
+ *           address:
  *             type: string
- *             description: this is for type like technical or other 
+ *             description: this is for category address
+ *           contact_no:
+ *             type: string
+ *             description: this is for contact number
+ *           email:
+ *             type: string
+ *             description: this is for email address of category
+ *           
  */
 
 /**
  * @swagger
  * tags:
- *   name:  Skils Record
- *   description: Record of all skils CRUD
+ *   name: category Record
+ *   description: Record of all  CRUD
  * 
  */
 
 /**
  * @swagger
- * /skils/:
+ * /category/:
  *  get:
- *     summary: Use to request all user Record
- *     tags: [Skils Record]
+ *     summary: Use to request all category Record
+ *     tags: [category Record]
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  post:
- *     summary: used to add new skils
- *     tags: [Skils Record]
+ *     summary: used to update category
+ *     tags: [category Record]
  *     requestBody:
  *       content:
  *         application/json:
- *           schema: 
- *             $ref: '#/components/schemas/skilsDto'
+ *           schema:
+ *             $ref: '#/components/schemas/categoryDto'
  *     responses:
- *         '200':
- *           description: A sucessfull response
- * 
- * /skils/{id}:
+ *        '200':
+ *          description: A sucessfull response
+ * /category/{id}:
  *  patch:
- *     summary: used to update skilss
- *     tags: [Skils Record]
+ *     summary: used to update category
+ *     tags: [category Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -66,13 +68,13 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/skilsDto'
+ *             $ref: '#/components/schemas/categoryDto'
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  delete:
- *     summary: Use to request all user Record
- *     tags: [Skils Record]
+ *     summary: Use to request all category Record
+ *     tags: [category Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -85,16 +87,16 @@ const router = Router();
  *          description: A sucessfull response
  */
 
+
 router
 .route('/')
-.get(getCategory)
-.post(postCategoryHandler);
+.get(getCustomerHandler)
+.post(PostustomerHandler);
 
-
-router.route('/:id')
-.patch(patchCategoryHandler)
-.delete(deleteCategoryHandler);
-
-
+router
+.route('/:id')
+.get(getSingleCustomerHandler)
+.patch(updateCustomerHandler)
+.delete(deleteCustomerHandler);
 
 export default router;

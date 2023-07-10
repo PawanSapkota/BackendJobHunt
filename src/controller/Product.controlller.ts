@@ -3,13 +3,13 @@ import AppError from "../Utils/AppError";
 import { AppDataSource } from "../data-source";
 import { Product } from '../entity/Product';
 import { JobInfo } from '../entity/Brand';
-import { Category } from '../entity/Category';
+import { Skills } from '../entity/Skills';
 
 
 
 const ProductRepo = AppDataSource.getRepository(Product);
 const BrandRepo = AppDataSource.getRepository(JobInfo);
-const CategoryRepo = AppDataSource.getRepository(Category);
+const CategoryRepo = AppDataSource.getRepository(Skills);
 
 
 export const getProductHandler = async (

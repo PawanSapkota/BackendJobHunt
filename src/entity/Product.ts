@@ -1,6 +1,6 @@
 import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn, ManyToOne, OneToMany} from 'typeorm';
 import { JobInfo } from './Brand';
-import { Category } from './Category';
+import { Skills } from './Skills';
 import { Sales } from './Sales';
 
 @Entity()

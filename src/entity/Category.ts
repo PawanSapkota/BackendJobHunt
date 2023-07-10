@@ -1,25 +1,35 @@
-import {Entity,Column,CreateDateColumn,PrimaryGeneratedColumn, OneToMany} from 'typeorm'
-// import { StudentInfo } from './Brand'
-
+import {Entity,PrimaryGeneratedColumn,Column,CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
+import { Sales } from './Sales';
 @Entity()
-export class Skills{
+export class Category{
 
     @PrimaryGeneratedColumn('uuid')
     id:string
 
     @Column()
-    title:string
-
+    name:string
+    
     @Column()
-    type:string
+    address:string
+    
+    // @Column()
+    // contact_no:string
 
-    // @OneToMany(()=>StudentInfo,(product)=>product.student_category,{
-        
-    // })
-    // student_type:StudentInfo[]
+    // @Column()
+    // email:string
 
+    // @Column()
+    // no_of_order:number
+    
     @CreateDateColumn()
     createdAt:Date
 
+    @UpdateDateColumn()
+    updatedAt:Date
 
+    // @OneToMany(()=>Sales,(Sales)=>Sales.CustomerId,{
+    //     cascade:true,eager:true,
+    //     onDelete:'CASCADE',onUpdate:'CASCADE'
+    // })
+    // salesId:Sales[]
 }

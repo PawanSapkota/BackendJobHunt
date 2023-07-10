@@ -12,7 +12,7 @@ import * as morgan from 'morgan'
 import BrandRoute from './Routes/Brand.routes';
 // import OtakuRoute from './Routes/OtakuVoters.routes';
 
-// import CustomerRoute from './Routes/Customer.routes';
+import CustomerRoute from './Routes/Category.routes';
 // import PaymentRoute from './Routes/Payment.routes';
 
 // import ProductRoute from './Routes/Product.routes';
@@ -20,7 +20,7 @@ import BrandRoute from './Routes/Brand.routes';
 // import BookingRoute from './Routes/Booking.routes';
 // import UsersRoute from './Routes/User.routes';
 
-import CategoryRoute from './Routes/Category.routes';
+import CategoryRoute from './Routes/Skills.routes';
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
 // import SENDMAIL from './Utils/Mail';
@@ -63,7 +63,9 @@ app.use('/doc',swaggerUiExpress.serve,swaggerUiExpress.setup(swaggerDocs));
     })
 
     app.use('/jobInfo',BrandRoute);
-    app.use('/skils',CategoryRoute);
+    app.use('/skills',CategoryRoute);
+    app.use('/category',CustomerRoute);
+
     // app.use('/otakuvoters',OtakuRoute);
 
     // app.use('/customer',CustomerRoute);
