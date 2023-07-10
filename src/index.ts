@@ -39,7 +39,7 @@ const swaggerOptions={
     definition:{
        openapi: '3.0.0',
        info:{
-           title:"Dream salon backend",
+           title:"JobHunt Backned documentation",
            version:"15",
            description:"Main website",
            contact:{
