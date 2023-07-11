@@ -3,6 +3,7 @@ import { DataSource } from "typeorm";
 import { JobInfo } from "./entity/Brand";
 import { Skills } from "./entity/Skills";
 import { Category } from "./entity/Category";
+import { JobType } from "./entity/JobType";
 // import {StudentInfo} from './entity/Brand'
 // import {Category} from './entity/Category'
 // import {OtakuVoters} from './entity/OtakuVoters'
@@ -22,6 +23,7 @@ export const AppDataSource = new DataSource({
     JobInfo,
     Skills,
     Category,
+    JobType,
   ],
   migrations: ["src/migration/**/*.ts"],
   subscribers: ["src/subscribe/**/*.ts"],

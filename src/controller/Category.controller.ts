@@ -35,7 +35,7 @@ export const getSingleCustomerHandler = async (
     await CustomerRepo.findOneBy({ id: req.params.id })
       .then((result) => {
         res.status(200).json({
-          message: "customer has been fetched",
+          message: "category has been fetched",
           result,
         });
       })
@@ -55,7 +55,7 @@ export const PostustomerHandler = async (
     await CustomerRepo.save(req.body)
       .then((result) => {
         res.status(200).json({
-          message: "customer has been updated",
+          message: "category has been updated",
           result,
         });
       })
@@ -75,13 +75,13 @@ export const updateCustomerHandler = async (
   try {
     let customer = await CustomerRepo.findOneBy({ id: req.params.id });
     if (!customer) {
-      return next(new AppError(404, "customer with this id not found"));
+      return next(new AppError(404, "category with this id not found"));
     }
     Object.assign(customer, req.body);
     await CustomerRepo.save(customer)
       .then((result) => {
         res.status(200).json({
-          message: "customer has been updated",
+          message: "category has been updated",
           result,
         });
       })
@@ -101,7 +101,7 @@ export const deleteCustomerHandler = async (
   try {
     let customer = await CustomerRepo.findOneBy({ id: req.params.id });
     if (!customer) {
-      return next(new AppError(404, "customer with this id not found"));
+      return next(new AppError(404, "category with this id not found"));
     }
     await CustomerRepo.remove(customer)
       .then((result) => {

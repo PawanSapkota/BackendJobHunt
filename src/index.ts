@@ -21,6 +21,8 @@ import CustomerRoute from "./Routes/Category.routes";
 // import UsersRoute from './Routes/User.routes';
 
 import CategoryRoute from "./Routes/Skills.routes";
+import JobTypeRoute from "./Routes/JobType.routes";
+
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
 // import SENDMAIL from './Utils/Mail';
@@ -75,8 +77,7 @@ AppDataSource.initialize()
     app.use("/jobInfo", BrandRoute);
     app.use("/skills", CategoryRoute);
     app.use("/category", CustomerRoute);
-
-    // app.use('/otakuvoters',OtakuRoute);
+    app.use("/jobtype", JobTypeRoute);
 
     // app.use('/customer',CustomerRoute);
     // app.use('/payment',PaymentRoute);

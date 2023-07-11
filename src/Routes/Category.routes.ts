@@ -1,7 +1,12 @@
-import {Router} from 'express';
-import {deleteCustomerHandler, getCustomerHandler, getSingleCustomerHandler,PostustomerHandler,updateCustomerHandler} from '../controller/Category.controller';
-const router=Router();
-
+import { Router } from "express";
+import {
+  deleteCustomerHandler,
+  getCustomerHandler,
+  getSingleCustomerHandler,
+  PostustomerHandler,
+  updateCustomerHandler,
+} from "../controller/Category.controller";
+const router = Router();
 
 /**
  * @swagger
@@ -9,20 +14,11 @@ const router=Router();
  *   schemas:
  *     categoryDto:
  *         type: object
- *         properties: 
+ *         properties:
  *           name:
  *             type: string
  *             description: this is for name of the category
- *           address:
- *             type: string
- *             description: this is for category address
- *           contact_no:
- *             type: string
- *             description: this is for contact number
- *           email:
- *             type: string
- *             description: this is for email address of category
- *           
+ *
  */
 
 /**
@@ -30,7 +26,7 @@ const router=Router();
  * tags:
  *   name: category Record
  *   description: Record of all  CRUD
- * 
+ *
  */
 
 /**
@@ -60,7 +56,7 @@ const router=Router();
  *     parameters:
  *       - in: path
  *         name: id
- *         schema: 
+ *         schema:
  *           type: string
  *         required: true
  *         description: this if or params with name id
@@ -80,23 +76,19 @@ const router=Router();
  *         name: id
  *         schema:
  *           type: string
- *         required: true 
+ *         required: true
  *         description: this is for id
  *     responses:
  *        '200':
  *          description: A sucessfull response
  */
 
+router.route("/").get(getCustomerHandler).post(PostustomerHandler);
 
 router
-.route('/')
-.get(getCustomerHandler)
-.post(PostustomerHandler);
-
-router
-.route('/:id')
-.get(getSingleCustomerHandler)
-.patch(updateCustomerHandler)
-.delete(deleteCustomerHandler);
+  .route("/:id")
+  .get(getSingleCustomerHandler)
+  .patch(updateCustomerHandler)
+  .delete(deleteCustomerHandler);
 
 export default router;
