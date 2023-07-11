@@ -11,16 +11,16 @@ export const getJobTypeHandler = async (
   next: NextFunction
 ) => {
   try {
-    let JobType = await JobTypeRepo.find({
+    let jobtypes = await JobTypeRepo.find({
       order: {
         createdAt: "ASC",
       },
     });
-    console.log(JobType);
+    console.log(jobtypes);
     res.status(200).json({
       status: "success",
 
-      JobType,
+      jobtypes,
     });
   } catch (err: any) {
     next(err);
@@ -33,13 +33,13 @@ export const getSingleJobTypeHandler = async (
   next: NextFunction
 ) => {
   try {
-    let JobType = await JobTypeRepo.findOneBy({
+    let jobtypes = await JobTypeRepo.findOneBy({
       id: req.params.id,
     });
-    console.log(JobType);
+    console.log(jobtypes);
     res.status(200).json({
       status: "success",
-      JobType,
+      jobtypes,
     });
   } catch (err: any) {
     next(err);
@@ -58,10 +58,10 @@ export const postJobTypeHandler = async (
     // req.body.student_category=category;
     // req.body.image = req.file.filename;
     await JobTypeRepo.save(req.body)
-      .then((result) => {
+      .then((jobtypes) => {
         res.status(200).json({
           message: "JobType has been added",
-          result,
+          jobtypes,
         });
       })
       .catch((err) => {
@@ -90,19 +90,19 @@ export const updateJobTypeHandler = async (
 ) => {
   try {
     console.log(req.body, req.file);
-    let JobType = await JobTypeRepo.findOneBy({ id: req.params.id });
-    if (!JobType) {
+    let jobtypes = await JobTypeRepo.findOneBy({ id: req.params.id });
+    if (!jobtypes) {
       return next(new AppError(404, "JobType with this id not found"));
     }
 
     console.log(req.body);
     Object.assign(JobType, req.body);
-    await JobTypeRepo.save(JobType)
-      .then((result) => {
-        console.log(result);
+    await JobTypeRepo.save(jobtypes)
+      .then((jobtypes) => {
+        console.log(jobtypes);
         res.status(200).json({
           message: "working",
-          result,
+          jobtypes,
         });
       })
       .catch((err) => {
@@ -128,11 +128,11 @@ export const deleteJobType = async (
   next: NextFunction
 ) => {
   try {
-    let JobType = await JobTypeRepo.findOneBy({ id: req.params.id });
-    if (!JobType) {
+    let jobtypes = await JobTypeRepo.findOneBy({ id: req.params.id });
+    if (!jobtypes) {
       return next(new AppError(404, "JobType with this id not found"));
     }
-    await JobTypeRepo.remove(JobType)
+    await JobTypeRepo.remove(jobtypes)
       .then((result: any) => {
         console.log(result);
         res.status(200).json({

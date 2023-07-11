@@ -3,19 +3,19 @@ import { AppDataSource } from "../data-source";
 import { Category } from "../entity/Category";
 import { Response, Request, NextFunction } from "express";
 
-const CustomerRepo = AppDataSource.getRepository(Category);
+const CategoryRepo = AppDataSource.getRepository(Category);
 
-export const getCustomerHandler = async (
+export const getCategoryHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await CustomerRepo.find()
-      .then((result) => {
+    await CategoryRepo.find()
+      .then((categories) => {
         res.status(200).json({
           message: "category has been fetched",
-          result,
+          categories,
         });
       })
       .catch((err) => {
@@ -26,17 +26,17 @@ export const getCustomerHandler = async (
   }
 };
 
-export const getSingleCustomerHandler = async (
+export const getSingleCategoryHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await CustomerRepo.findOneBy({ id: req.params.id })
-      .then((result) => {
+    await CategoryRepo.findOneBy({ id: req.params.id })
+      .then((categories) => {
         res.status(200).json({
           message: "category has been fetched",
-          result,
+          categories,
         });
       })
       .catch((err) => {
@@ -52,11 +52,11 @@ export const PostustomerHandler = async (
   next: NextFunction
 ) => {
   try {
-    await CustomerRepo.save(req.body)
-      .then((result) => {
+    await CategoryRepo.save(req.body)
+      .then((categories) => {
         res.status(200).json({
           message: "category has been updated",
-          result,
+          categories,
         });
       })
       .catch((err) => {
@@ -67,22 +67,22 @@ export const PostustomerHandler = async (
   }
 };
 
-export const updateCustomerHandler = async (
+export const updateCategoryHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let customer = await CustomerRepo.findOneBy({ id: req.params.id });
-    if (!customer) {
+    let Category = await CategoryRepo.findOneBy({ id: req.params.id });
+    if (!Category) {
       return next(new AppError(404, "category with this id not found"));
     }
-    Object.assign(customer, req.body);
-    await CustomerRepo.save(customer)
-      .then((result) => {
+    Object.assign(Category, req.body);
+    await CategoryRepo.save(Category)
+      .then((categories) => {
         res.status(200).json({
           message: "category has been updated",
-          result,
+          categories,
         });
       })
       .catch((err) => {
@@ -93,21 +93,21 @@ export const updateCustomerHandler = async (
   }
 };
 
-export const deleteCustomerHandler = async (
+export const deleteCategoryHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let customer = await CustomerRepo.findOneBy({ id: req.params.id });
-    if (!customer) {
+    let Category = await CategoryRepo.findOneBy({ id: req.params.id });
+    if (!Category) {
       return next(new AppError(404, "category with this id not found"));
     }
-    await CustomerRepo.remove(customer)
-      .then((result) => {
+    await CategoryRepo.remove(Category)
+      .then((categories) => {
         res.status(200).json({
-          message: "customer has been deleted",
-          result,
+          message: "Category has been deleted",
+          categories,
         });
       })
       .catch((err) => {

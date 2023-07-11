@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-  deleteCustomerHandler,
-  getCustomerHandler,
-  getSingleCustomerHandler,
+  deleteCategoryHandler,
+  getCategoryHandler,
+  getSingleCategoryHandler,
   PostustomerHandler,
-  updateCustomerHandler,
+  updateCategoryHandler,
 } from "../controller/Category.controller";
 const router = Router();
 
@@ -83,12 +83,12 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").get(getCustomerHandler).post(PostustomerHandler);
+router.route("/").get(getCategoryHandler).post(PostustomerHandler);
 
 router
   .route("/:id")
-  .get(getSingleCustomerHandler)
-  .patch(updateCustomerHandler)
-  .delete(deleteCustomerHandler);
+  .get(getSingleCategoryHandler)
+  .patch(updateCategoryHandler)
+  .delete(deleteCategoryHandler);
 
 export default router;
