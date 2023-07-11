@@ -22,6 +22,7 @@ import CustomerRoute from "./Routes/Category.routes";
 
 import CategoryRoute from "./Routes/Skills.routes";
 import JobTypeRoute from "./Routes/JobType.routes";
+import TechnologyRoute from "./Routes/Technology.routes";
 
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
@@ -78,6 +79,7 @@ AppDataSource.initialize()
     app.use("/skills", CategoryRoute);
     app.use("/category", CustomerRoute);
     app.use("/jobtype", JobTypeRoute);
+    app.use("/technology", TechnologyRoute);
 
     // app.use('/customer',CustomerRoute);
     // app.use('/payment',PaymentRoute);

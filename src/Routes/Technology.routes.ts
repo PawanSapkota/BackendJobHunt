@@ -1,11 +1,11 @@
 import { Router } from "express";
 import {
-  deleteJobType,
-  getJobTypeHandler,
-  getSingleJobTypeHandler,
-  postJobTypeHandler,
-  updateJobTypeHandler,
-} from "../controller/JobType.controller";
+  deleteTechnology,
+  getSingleTechnologyHandler,
+  getTechnologyHandler,
+  postTechnologyHandler,
+  updateTechnologyHandler,
+} from "../controller/Technology.controller";
 
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -14,83 +14,83 @@ const router = Router();
  * @swagger
  * components:
  *   schemas:
- *     JobTypeDto:
- *         type: object
+ *     TechnologyDto:
+ *         name: object
  *         properties:
- *           type:
- *             type: string
+ *           name:
+ *             name: string
  *             description: this is for name of the category
  */
 
 /**
  * @swagger
  * tags:
- *   name: JobType Record
+ *   name: Technology Record
  *   description: Record of all user CRUD
  *
  */
 
 /**
  * @swagger
- * /jobtype/:
+ * /technology/:
  *  get:
  *     summary: Use to request all user Record
- *     tags: [JobType Record]
+ *     tags: [Technology Record]
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  post:
  *     summary: used to add new studentinfo
- *     tags: [JobType Record]
+ *     tags: [Technology Record]
  *     requestBody:
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/JobTypeDto'
+ *             $ref: '#/components/schemas/TechnologyDto'
  *     responses:
  *         '200':
  *           description: A sucessfull response
  *
- * /jobtype/{id}:
+ * /technology/{id}:
  *  patch:
  *     summary: used to update studentinfos
- *     tags: [JobType Record]
+ *     tags: [Technology Record]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           name: string
  *         required: true
  *         description: this if or params with name id
  *     requestBody:
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/JobTypeDto'
+ *             $ref: '#/components/schemas/TechnologyDto'
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  delete:
- *     summary: Use to request all JobType Record
- *     tags: [JobType Record]
+ *     summary: Use to request all Technology Record
+ *     tags: [Technology Record]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           name: string
  *         required: true
  *         description: this is for id
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  get:
- *     summary: Use to request all JobType Record
- *     tags: [JobType Record]
+ *     summary: Use to request all Technology Record
+ *     tags: [Technology Record]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           name: string
  *         required: true
  *         description: this is for id
  *     responses:
@@ -98,13 +98,13 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").post(postJobTypeHandler).get(getJobTypeHandler);
+router.route("/").post(postTechnologyHandler).get(getTechnologyHandler);
 //   .delete(getPostHancleadler);
 
 router
   .route("/:id")
-  .get(getSingleJobTypeHandler)
-  .patch(updateJobTypeHandler)
-  .delete(deleteJobType);
+  .get(getSingleTechnologyHandler)
+  .patch(updateTechnologyHandler)
+  .delete(deleteTechnology);
 
 export default router;
