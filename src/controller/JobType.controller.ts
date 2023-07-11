@@ -3,50 +3,50 @@ import { NextFunction, Request, Response } from "express";
 import { JobInfo } from "../entity/Brand";
 import AppError from "../Utils/AppError";
 import { JobType } from "../entity/JobType";
-const BrandRepo = AppDataSource.getRepository(JobType);
+const JobTypeRepo = AppDataSource.getRepository(JobType);
 
-export const getBrandHandler = async (
+export const getJobTypeHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let Brand = await BrandRepo.find({
+    let JobType = await JobTypeRepo.find({
       order: {
         createdAt: "ASC",
       },
     });
-    console.log(Brand);
+    console.log(JobType);
     res.status(200).json({
       status: "success",
 
-      Brand,
+      JobType,
     });
   } catch (err: any) {
     next(err);
   }
 };
 
-export const getSingleBrandHandler = async (
+export const getSingleJobTypeHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let Brand = await BrandRepo.findOneBy({
+    let JobType = await JobTypeRepo.findOneBy({
       id: req.params.id,
     });
-    console.log(Brand);
+    console.log(JobType);
     res.status(200).json({
       status: "success",
-      Brand,
+      JobType,
     });
   } catch (err: any) {
     next(err);
   }
 };
 
-export const postBrandHandler = async (
+export const postJobTypeHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -57,7 +57,7 @@ export const postBrandHandler = async (
     // category.Category_name=req.body.Category_name;
     // req.body.student_category=category;
     // req.body.image = req.file.filename;
-    await BrandRepo.save(req.body)
+    await JobTypeRepo.save(req.body)
       .then((result) => {
         res.status(200).json({
           message: "JobType has been added",
@@ -83,21 +83,21 @@ export const postBrandHandler = async (
   }
 };
 
-export const updateBrandHandler = async (
+export const updateJobTypeHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     console.log(req.body, req.file);
-    let Brand = await BrandRepo.findOneBy({ id: req.params.id });
-    if (!Brand) {
+    let JobType = await JobTypeRepo.findOneBy({ id: req.params.id });
+    if (!JobType) {
       return next(new AppError(404, "JobType with this id not found"));
     }
 
     console.log(req.body);
-    Object.assign(Brand, req.body);
-    await BrandRepo.save(Brand)
+    Object.assign(JobType, req.body);
+    await JobTypeRepo.save(JobType)
       .then((result) => {
         console.log(result);
         res.status(200).json({
@@ -122,17 +122,17 @@ export const updateBrandHandler = async (
   }
 };
 
-export const deleteBrand = async (
+export const deleteJobType = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let Brand = await BrandRepo.findOneBy({ id: req.params.id });
-    if (!Brand) {
+    let JobType = await JobTypeRepo.findOneBy({ id: req.params.id });
+    if (!JobType) {
       return next(new AppError(404, "JobType with this id not found"));
     }
-    await BrandRepo.remove(Brand)
+    await JobTypeRepo.remove(JobType)
       .then((result: any) => {
         console.log(result);
         res.status(200).json({

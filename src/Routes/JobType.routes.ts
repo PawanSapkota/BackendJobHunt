@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-  getBrandHandler,
-  postBrandHandler,
-  deleteBrand,
-  updateBrandHandler,
-  getSingleBrandHandler,
+  getJobTypeHandler,
+  postJobTypeHandler,
+  deleteJobType,
+  updateJobTypeHandler,
+  getSingleJobTypeHandler,
 } from "../controller/JobType.controller";
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -97,13 +97,13 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").post(postBrandHandler).get(getBrandHandler);
+router.route("/").post(postJobTypeHandler).get(getJobTypeHandler);
 //   .delete(getPostHancleadler);
 
 router
   .route("/:id")
-  .get(getSingleBrandHandler)
-  .patch(updateBrandHandler)
-  .delete(deleteBrand);
+  .get(getSingleJobTypeHandler)
+  .patch(updateJobTypeHandler)
+  .delete(deleteJobType);
 
 export default router;
