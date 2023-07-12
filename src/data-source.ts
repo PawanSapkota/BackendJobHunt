@@ -5,6 +5,7 @@ import { Skills } from "./entity/Skills";
 import { Category } from "./entity/Category";
 import { JobType } from "./entity/JobType";
 import { Technology } from "./entity/Technology";
+import { Location } from "./entity/Location";
 // import {StudentInfo} from './entity/Brand'
 // import {Category} from './entity/Category'
 // import {OtakuVoters} from './entity/OtakuVoters'
@@ -26,6 +27,7 @@ export const AppDataSource = new DataSource({
     Category,
     JobType,
     Technology,
+    Location,
   ],
   migrations: ["src/migration/**/*.ts"],
   subscribers: ["src/subscribe/**/*.ts"],
