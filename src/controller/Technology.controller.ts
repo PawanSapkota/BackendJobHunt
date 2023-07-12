@@ -1,6 +1,5 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
-import { JobInfo } from "../entity/Brand";
 import AppError from "../Utils/AppError";
 import { Technology } from "../entity/Technology";
 const TechnologyRepo = AppDataSource.getRepository(Technology);
