@@ -1,11 +1,11 @@
 import { Router } from "express";
 import {
-  deleteLocation,
-  getSingleLocationHandler,
-  getLocationHandler,
-  postLocationHandler,
-  updateLocationHandler,
-} from "../controller/Location.controller";
+  deleteBenefit,
+  getSingleBenefitHandler,
+  getBenefitHandler,
+  postBenefitHandler,
+  updateBenefitHandler,
+} from "../controller/Benefit.controller";
 import { Auth } from "../Utils/ValidateRoutes";
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -14,47 +14,47 @@ const router = Router();
  * @swagger
  * components:
  *   schemas:
- *     LocationDto:
+ *     BenefitDto:
  *         name: object
  *         properties:
  *           name:
  *             name: string
- *             description: this is for name of the location
+ *             description: this is for name of the benefit
  */
 
 /**
  * @swagger
  * tags:
- *   name: Location Record
- *   description: Record of all location CRUD
+ *   name: Benefit Record
+ *   description: Record of all benefit CRUD
  *
  */
 
 /**
  * @swagger
- * /location/:
+ * /benefit/:
  *  get:
- *     summary: Use to request all location Record
- *     tags: [Location Record]
+ *     summary: Use to request all benefit Record
+ *     tags: [Benefit Record]
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  post:
  *     summary: used to add new studentinfo
- *     tags: [Location Record]
+ *     tags: [Benefit Record]
  *     requestBody:
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/LocationDto'
+ *             $ref: '#/components/schemas/BenefitDto'
  *     responses:
  *         '200':
  *           description: A sucessfull response
  *
- * /location/{id}:
+ * /benefit/{id}:
  *  patch:
  *     summary: used to update studentinfos
- *     tags: [Location Record]
+ *     tags: [Benefit Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -66,13 +66,13 @@ const router = Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/LocationDto'
+ *             $ref: '#/components/schemas/BenefitDto'
  *     responses:
  *        '200':
  *          description: A sucessfull response
  *  delete:
- *     summary: Use to request all Location Record
- *     tags: [Location Record]
+ *     summary: Use to request all Benefit Record
+ *     tags: [Benefit Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -84,8 +84,8 @@ const router = Router();
  *        '200':
  *          description: A sucessfull response
  *  get:
- *     summary: Use to request all Location Record
- *     tags: [Location Record]
+ *     summary: Use to request all Benefit Record
+ *     tags: [Benefit Record]
  *     parameters:
  *       - in: path
  *         name: id
@@ -98,13 +98,13 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").post(postLocationHandler).get(getLocationHandler);
+router.route("/").post(postBenefitHandler).get(getBenefitHandler);
 //   .delete(getPostHancleadler);
 
 router
   .route("/:id")
-  .get(getSingleLocationHandler)
-  .patch(updateLocationHandler)
-  .delete(deleteLocation);
+  .get(getSingleBenefitHandler)
+  .patch(updateBenefitHandler)
+  .delete(deleteBenefit);
 
 export default router;

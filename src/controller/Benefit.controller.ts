@@ -1,50 +1,50 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
 import AppError from "../Utils/AppError";
-import { Location } from "../entity/Location";
-const LocationRepo = AppDataSource.getRepository(Location);
+import { Benefit } from "../entity/Benefit";
+const BenefitRepo = AppDataSource.getRepository(Benefit);
 
-export const getLocationHandler = async (
+export const getBenefitHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let Locations = await LocationRepo.find({
+    let Benefits = await BenefitRepo.find({
       order: {
         createdAt: "ASC",
       },
     });
-    console.log(Locations);
+    console.log(Benefits);
     res.status(200).json({
       status: "success",
-      Locations,
+      Benefits,
     });
   } catch (err: any) {
     next(err);
   }
 };
 
-export const getSingleLocationHandler = async (
+export const getSingleBenefitHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let technologies = await LocationRepo.findOneBy({
+    let Benefits = await BenefitRepo.findOneBy({
       id: req.params.id,
     });
-    console.log(technologies);
+    console.log(Benefits);
     res.status(200).json({
       status: "success",
-      technologies,
+      Benefits,
     });
   } catch (err: any) {
     next(err);
   }
 };
 
-export const postLocationHandler = async (
+export const postBenefitHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -55,10 +55,10 @@ export const postLocationHandler = async (
     // category.Category_name=req.body.Category_name;
     // req.body.student_category=category;
     // req.body.image = req.file.filename;
-    await LocationRepo.save(req.body)
+    await BenefitRepo.save(req.body)
       .then((result) => {
         res.status(200).json({
-          message: "Location has been added",
+          message: "Benefit has been added",
           result,
         });
       })
@@ -74,28 +74,28 @@ export const postLocationHandler = async (
       return res.status(409).json({
         status: "fail",
         msg: error.message,
-        message: "Location with that name already exist",
+        message: "Benefit with that name already exist",
       });
     }
     next(error);
   }
 };
 
-export const updateLocationHandler = async (
+export const updateBenefitHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     console.log(req.body, req.file);
-    let technologies = await LocationRepo.findOneBy({ id: req.params.id });
-    if (!technologies) {
-      return next(new AppError(404, "Location with this id not found"));
+    let Benefits = await BenefitRepo.findOneBy({ id: req.params.id });
+    if (!Benefits) {
+      return next(new AppError(404, "Benefit with this id not found"));
     }
 
     console.log(req.body);
-    Object.assign(technologies, req.body);
-    await LocationRepo.save(technologies)
+    Object.assign(Benefits, req.body);
+    await BenefitRepo.save(Benefits)
       .then((result) => {
         console.log(result);
         res.status(200).json({
@@ -114,27 +114,27 @@ export const updateLocationHandler = async (
       return res.status(409).json({
         status: "fail",
         msg: error.message,
-        message: "Location with that name already exist",
+        message: "Benefit with that name already exist",
       });
     }
   }
 };
 
-export const deleteLocation = async (
+export const deleteBenefit = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    let technologies = await LocationRepo.findOneBy({ id: req.params.id });
-    if (!technologies) {
-      return next(new AppError(404, "Location with this id not found"));
+    let Benefits = await BenefitRepo.findOneBy({ id: req.params.id });
+    if (!Benefits) {
+      return next(new AppError(404, "Benefit with this id not found"));
     }
-    await LocationRepo.remove(technologies)
+    await BenefitRepo.remove(Benefits)
       .then((result: any) => {
         console.log(result);
         res.status(200).json({
-          message: "Location has beed deleted successfully",
+          message: "Benefit has beed deleted successfully",
           result,
         });
       })

@@ -19,6 +19,7 @@ import CustomerRoute from "./Routes/Category.routes";
 // import ServicesRoute from './Routes/Service.routes';
 // import BookingRoute from './Routes/Booking.routes';
 import LocationRoute from "./Routes/Location.routes";
+import BenefitRoute from "./Routes/Benefit.routes";
 
 import CategoryRoute from "./Routes/Skills.routes";
 import JobTypeRoute from "./Routes/JobType.routes";
@@ -80,8 +81,9 @@ AppDataSource.initialize()
     app.use("/category", CustomerRoute);
     app.use("/jobtype", JobTypeRoute);
     app.use("/technology", TechnologyRoute);
-
     app.use("/location", LocationRoute);
+    app.use("/benefit", BenefitRoute);
+
     // app.use('/payment',PaymentRoute);
     // app.use('/product',ProductRoute);
     // app.use('/service',ServicesRoute);
