@@ -7,6 +7,7 @@ import { JobType } from "./entity/JobType";
 import { Technology } from "./entity/Technology";
 import { Location } from "./entity/Location";
 import { Benefit } from "./entity/Benefit";
+import { Auth } from "./entity/Auth";
 
 // import {StudentInfo} from './entity/Brand'
 // import {Category} from './entity/Category'
@@ -14,14 +15,18 @@ import { Benefit } from "./entity/Benefit";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "dpg-ciihst2ip7vpelre60qg-a.oregon-postgres.render.com",
+  // host: "dpg-ciihst2ip7vpelre60qg-a.oregon-postgres.render.com",
+  host:"localhost",
   port: 5432,
-  username: "jobhuntportal",
-  password: "Ut8Fw4K2m6dvTm5HLmsnoPITQpiYk6ci",
-  database: "jobhunt",
+  // username: "jobhuntportal",
+  username:"postgres",
+  // password: "Ut8Fw4K2m6dvTm5HLmsnoPITQpiYk6ci",
+  password:"987654321",
+  // database: "jobhunt",
+  database:"jobhuntdb",
   synchronize: true,
   logging: false,
-  ssl: true,
+  ssl: false,
   entities: [
     // 'src/entity/**/*.ts','./entity/**/*.ts'
     JobInfo,
@@ -31,6 +36,7 @@ export const AppDataSource = new DataSource({
     Technology,
     Location,
     Benefit,
+    Auth
   ],
   migrations: ["src/migration/**/*.ts"],
   subscribers: ["src/subscribe/**/*.ts"],

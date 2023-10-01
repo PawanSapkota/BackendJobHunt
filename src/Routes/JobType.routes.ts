@@ -6,6 +6,8 @@ import {
   postJobTypeHandler,
   updateJobTypeHandler,
 } from "../controller/JobType.controller";
+import { Auth } from "../Utils/ValidateRoutes";
+import { RoleValidate } from "../Utils/RoleValidate";
 
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -98,13 +100,16 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").post(postJobTypeHandler).get(getJobTypeHandler);
+router
+  .route("/")
+  .post(postJobTypeHandler)
+  .get(Auth, RoleValidate, getJobTypeHandler);
 //   .delete(getPostHancleadler);
 
 router
   .route("/:id")
-  .get(getSingleJobTypeHandler)
-  .patch(updateJobTypeHandler)
-  .delete(deleteJobType);
+  .get(Auth, getSingleJobTypeHandler)
+  .patch(Auth, updateJobTypeHandler)
+  .delete(Auth, deleteJobType);
 
 export default router;

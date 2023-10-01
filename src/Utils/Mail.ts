@@ -7,17 +7,20 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "nischalkarki1661@gmail.com",
-    pass: "uydkxbzgasaymmjc",
+    user: "sapkotapawan33@gmail.com",
+    pass: "yeqc qyax pfbo wwtv",
   },
 });
 
 const SENDMAIL = async (mailDetails, callback) => {
-    try {
-      const info = await transporter.sendMail(mailDetails)
-      callback(info);
-    } catch (error) {
-      console.log(error);
-    } 
-  };
-  export default SENDMAIL;
+  try {
+    const info = await transporter.sendMail(mailDetails);
+    callback(info);
+  } catch (error) {
+    console.log(error);
+  }
+};
+export default SENDMAIL;
+
+
+  

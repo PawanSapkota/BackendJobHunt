@@ -104,7 +104,7 @@ router.route("/").post(postBenefitHandler).get(getBenefitHandler);
 router
   .route("/:id")
   .get(getSingleBenefitHandler)
-  .patch(updateBenefitHandler)
-  .delete(deleteBenefit);
+  .patch(Auth, updateBenefitHandler)
+  .delete(Auth, deleteBenefit);
 
 export default router;

@@ -103,8 +103,8 @@ router.route("/").post(postLocationHandler).get(getLocationHandler);
 
 router
   .route("/:id")
-  .get(getSingleLocationHandler)
-  .patch(updateLocationHandler)
-  .delete(deleteLocation);
+  .get(Auth, getSingleLocationHandler)
+  .patch(Auth, updateLocationHandler)
+  .delete(Auth, deleteLocation);
 
 export default router;

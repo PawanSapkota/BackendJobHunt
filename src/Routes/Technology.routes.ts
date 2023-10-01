@@ -6,6 +6,7 @@ import {
   postTechnologyHandler,
   updateTechnologyHandler,
 } from "../controller/Technology.controller";
+import { Auth } from "../Utils/ValidateRoutes";
 
 const router = Router();
 // router.use(deserializeUser, requireUser);
@@ -103,8 +104,8 @@ router.route("/").post(postTechnologyHandler).get(getTechnologyHandler);
 
 router
   .route("/:id")
-  .get(getSingleTechnologyHandler)
-  .patch(updateTechnologyHandler)
-  .delete(deleteTechnology);
+  .get(Auth, getSingleTechnologyHandler)
+  .patch(Auth, updateTechnologyHandler)
+  .delete(Auth, deleteTechnology);
 
 export default router;

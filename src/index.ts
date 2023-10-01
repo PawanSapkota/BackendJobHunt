@@ -20,6 +20,7 @@ import CustomerRoute from "./Routes/Category.routes";
 // import BookingRoute from './Routes/Booking.routes';
 import LocationRoute from "./Routes/Location.routes";
 import BenefitRoute from "./Routes/Benefit.routes";
+import AuthRoute from "./Routes/Auth.routes";
 
 import CategoryRoute from "./Routes/Skills.routes";
 import JobTypeRoute from "./Routes/JobType.routes";
@@ -34,7 +35,7 @@ AppDataSource.initialize()
     // create express app
     const app = express();
     app.use(bodyParser.json());
-    app.use(cors({ credentials: true, origin: "*" }));
+    app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
     app.use("/public", express.static("src/Public"));
     app.use(morgan("dev"));
 
@@ -83,6 +84,7 @@ AppDataSource.initialize()
     app.use("/technology", TechnologyRoute);
     app.use("/location", LocationRoute);
     app.use("/benefit", BenefitRoute);
+    app.use("/auth", AuthRoute);
 
     // app.use('/payment',PaymentRoute);
     // app.use('/product',ProductRoute);

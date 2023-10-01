@@ -6,6 +6,8 @@ import {
   PostustomerHandler,
   updateCategoryHandler,
 } from "../controller/Category.controller";
+import { Auth } from "../Utils/ValidateRoutes";
+import { RoleValidate } from "../Utils/RoleValidate";
 const router = Router();
 
 /**
@@ -83,12 +85,15 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").get(getCategoryHandler).post(PostustomerHandler);
+router
+  .route("/")
+  .get(Auth, RoleValidate, getCategoryHandler)
+  .post(Auth, PostustomerHandler);
 
 router
   .route("/:id")
   .get(getSingleCategoryHandler)
-  .patch(updateCategoryHandler)
-  .delete(deleteCategoryHandler);
+  .patch(Auth, RoleValidate, updateCategoryHandler)
+  .delete(Auth, RoleValidate, deleteCategoryHandler);
 
 export default router;

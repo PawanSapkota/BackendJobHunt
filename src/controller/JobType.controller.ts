@@ -127,6 +127,7 @@ export const deleteJobType = async (
   next: NextFunction
 ) => {
   try {
+    console.log("here");
     let jobtypes = await JobTypeRepo.findOneBy({ id: req.params.id });
     if (!jobtypes) {
       return next(new AppError(404, "JobType with this id not found"));
