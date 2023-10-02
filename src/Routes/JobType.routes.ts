@@ -102,7 +102,7 @@ const router = Router();
 
 router
   .route("/")
-  .post(postJobTypeHandler)
+  .post(Auth, RoleValidate, postJobTypeHandler)
   .get(Auth, RoleValidate, getJobTypeHandler);
 //   .delete(getPostHancleadler);
 

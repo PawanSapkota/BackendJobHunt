@@ -4,7 +4,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
+import { Company } from "./Company";
+import { Job } from "./Job";
+
 @Entity()
 export class Location {
   @PrimaryGeneratedColumn("uuid")
@@ -18,4 +23,12 @@ export class Location {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToMany(() => Company, (company) => company.locations)
+  @JoinTable()
+  companies: Company[];
+
+  @ManyToMany(() => Job, (job) => job.locations)
+  @JoinTable()
+  jobs: Job[];
 }

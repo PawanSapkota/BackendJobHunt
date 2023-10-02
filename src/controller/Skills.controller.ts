@@ -5,15 +5,14 @@ import { Skills } from "../entity/Skills";
 export interface RequestCustom extends Request {
   User: any;
 }
-const CategoryRepo = AppDataSource.getRepository(Skills);
+const SkillsRepo = AppDataSource.getRepository(Skills);
 export const getCategory = async (
   req: RequestCustom,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    console.log(req.User);
-    await CategoryRepo.find()
+    await SkillsRepo.find()
       .then((skills: object) => {
         res.status(200).json({
           message: "skill has been added",
@@ -35,7 +34,7 @@ export const postCategoryHandler = async (
 ) => {
   console.log(req.body);
   try {
-    await CategoryRepo.save(req.body)
+    await SkillsRepo.save(req.body)
       .then((skills: object) => {
         res.status(200).json({
           message: "skill has been added",
@@ -56,12 +55,12 @@ export const patchCategoryHandler = async (
   next: NextFunction
 ) => {
   try {
-    let Category = await CategoryRepo.findOneBy({ id: req.params.id });
-    if (!Category) {
+    let Skills = await SkillsRepo.findOneBy({ id: req.params.id });
+    if (!Skills) {
       return next(new AppError(404, "cateory with this di doesn't exist"));
     }
-    Object.assign(Category, req.body);
-    await CategoryRepo.save(Category)
+    Object.assign(Skills, req.body);
+    await SkillsRepo.save(Skills)
       .then((skills: object) => {
         res.status(200).json({
           message: "skill has been updated",
@@ -82,11 +81,11 @@ export const deleteCategoryHandler = async (
   next: NextFunction
 ) => {
   try {
-    let Category = await CategoryRepo.findOneBy({ id: req.params.id });
-    if (!Category) {
+    let Skills = await SkillsRepo.findOneBy({ id: req.params.id });
+    if (!Skills) {
       return next(new AppError(404, "skill with this di doesn't exist"));
     }
-    await CategoryRepo.remove(Category)
+    await SkillsRepo.remove(Skills)
       .then((skills: object) => {
         res.status(200).json({
           message: "skill has been updated",

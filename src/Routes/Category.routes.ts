@@ -88,7 +88,7 @@ const router = Router();
 router
   .route("/")
   .get(Auth, RoleValidate, getCategoryHandler)
-  .post(Auth, PostustomerHandler);
+  .post(Auth, RoleValidate, PostustomerHandler);
 
 router
   .route("/:id")

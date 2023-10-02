@@ -5,8 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { Sales } from "./Sales";
+import { Company } from "./Company";
 @Entity()
 export class Category {
   @PrimaryGeneratedColumn("uuid")
@@ -15,27 +18,13 @@ export class Category {
   @Column()
   name: string;
 
-  // @Column()
-  // address:string
-
-  // @Column()
-  // contact_no:string
-
-  // @Column()
-  // email:string
-
-  // @Column()
-  // no_of_order:number
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
 
-  // @OneToMany(()=>Sales,(Sales)=>Sales.CustomerId,{
-  //     cascade:true,eager:true,
-  //     onDelete:'CASCADE',onUpdate:'CASCADE'
-  // })
-  // salesId:Sales[]
+  @ManyToMany(() => Company, (company) => company.categories)
+  @JoinTable()
+  companies: Company[];
 }

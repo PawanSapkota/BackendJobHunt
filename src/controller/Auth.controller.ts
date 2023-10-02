@@ -87,6 +87,7 @@ export const postHandlerLogin = async (
               id: user.id,
               email: user.email,
               company_code: user.company_code,
+              role: user.role,
             },
             "pawan",
             {
