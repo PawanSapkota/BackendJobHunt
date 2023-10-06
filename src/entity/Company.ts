@@ -12,6 +12,7 @@ import { Location } from "./Location";
 import { Technology } from "./Technology";
 import { JobType } from "./JobType";
 import { Benefit } from "./Benefit";
+import { Job } from "./Job";
 @Entity()
 export class Company {
   @PrimaryGeneratedColumn("uuid")
@@ -39,6 +40,12 @@ export class Company {
   total_employee: number;
 
   @Column({ nullable: true })
+  description: string;
+
+  @Column({ nullable: true })
+  image: string;
+
+  @Column({ nullable: true })
   establish_data: Date;
 
   @CreateDateColumn()
@@ -58,9 +65,12 @@ export class Company {
   })
   technologies: Technology[];
 
-  @ManyToMany(() => JobType, (jobtype) => jobtype.companies)
+  @ManyToMany(() => JobType, (jobtype) => jobtype.companies, { nullable: true })
   jobtypes: JobType[];
 
   @ManyToMany(() => Benefit, (benefit) => benefit.companies)
   benefits: Benefit[];
+
+  @OneToMany(() => Job, (job) => job.companies)
+  jobs: Job[];
 }

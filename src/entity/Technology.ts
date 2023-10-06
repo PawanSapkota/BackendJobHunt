@@ -8,6 +8,7 @@ import {
   JoinTable,
 } from "typeorm";
 import { Company } from "./Company";
+import { Job } from "./Job";
 @Entity()
 export class Technology {
   @PrimaryGeneratedColumn("uuid")
@@ -25,4 +26,8 @@ export class Technology {
   @ManyToMany(() => Company, (company) => company.technologies)
   @JoinTable()
   companies: Company[];
+
+  @ManyToMany(() => Job, (job) => job.technologies)
+  @JoinTable()
+  jobs: Job[];
 }

@@ -3,11 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Location } from "./Location";
 import { Benefit } from "./Benefit";
+import { Company } from "./Company";
+import { Technology } from "./Technology";
 
 @Entity()
 export class Job {
@@ -46,4 +49,10 @@ export class Job {
 
   @ManyToMany(() => Benefit, (benefit) => benefit.jobs)
   benefits: Benefit[];
+
+  @ManyToMany(() => Technology, (technology) => technology.jobs)
+  technologies: Technology[];
+
+  @ManyToOne(() => Company, (company) => company.jobs)
+  companies: Company;
 }

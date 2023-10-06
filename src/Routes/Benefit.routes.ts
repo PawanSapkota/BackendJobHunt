@@ -98,8 +98,7 @@ const router = Router();
  *          description: A sucessfull response
  */
 
-router.route("/").post(postBenefitHandler).get(getBenefitHandler);
-//   .delete(getPostHancleadler);
+router.route("/").post(Auth, postBenefitHandler).get(getBenefitHandler);
 
 router
   .route("/:id")

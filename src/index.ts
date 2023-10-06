@@ -25,6 +25,7 @@ import AuthRoute from "./Routes/Auth.routes";
 import CategoryRoute from "./Routes/Skills.routes";
 import JobTypeRoute from "./Routes/JobType.routes";
 import TechnologyRoute from "./Routes/Technology.routes";
+import CompanyRoute from "./Routes/Company.routes";
 
 // import StaffRoute from './Routes/Staff.routes';
 // import HTML_TEMPLATE from './View/mail-template';
@@ -85,6 +86,7 @@ AppDataSource.initialize()
     app.use("/location", LocationRoute);
     app.use("/benefit", BenefitRoute);
     app.use("/auth", AuthRoute);
+    app.use("/company", CompanyRoute);
 
     // app.use('/payment',PaymentRoute);
     // app.use('/product',ProductRoute);

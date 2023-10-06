@@ -50,7 +50,7 @@ export const postBenefitHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body, req.file);
+    // console.log(req.body, req.file);
     // /let category= new Category();
     // category.Category_name=req.body.Category_name;
     // req.body.student_category=category;
