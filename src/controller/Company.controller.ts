@@ -41,6 +41,7 @@ export const companyPostHandler = async (
         id: In([...JSON.parse(req.body.technologies)]),
       },
     });
+    console.log(tech);
 
     let category = await CategoryRepo.find({
       where: {
@@ -65,9 +66,8 @@ export const companyPostHandler = async (
     req.body.technologies = tech;
     console.log(req.body);
 
-    if (req.file) {
-      req.body.image = req.file.filename;
-    }
+    req.body.image = req.file.filename;
+   
 
     console.log(req.body);
 

@@ -6,7 +6,7 @@ export interface RequestCustom extends Request {
   User: any;
 }
 const SkillsRepo = AppDataSource.getRepository(Skills);
-export const getCategory = async (
+export const getSkill = async (
   req: RequestCustom,
   res: Response,
   next: NextFunction
@@ -27,7 +27,7 @@ export const getCategory = async (
   }
 };
 
-export const postCategoryHandler = async (
+export const postSkillHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -49,7 +49,7 @@ export const postCategoryHandler = async (
   }
 };
 
-export const patchCategoryHandler = async (
+export const patchSkillHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -75,7 +75,7 @@ export const patchCategoryHandler = async (
   }
 };
 
-export const deleteCategoryHandler = async (
+export const deleteSkillHandler = async (
   req: Request,
   res: Response,
   next: NextFunction

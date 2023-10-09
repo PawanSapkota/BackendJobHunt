@@ -1,25 +1,30 @@
 import {Router} from 'express'
-import {getCategory,postCategoryHandler,deleteCategoryHandler,patchCategoryHandler} from '../controller/Skills.controller';
-import {Auth} from '../Utils/ValidateRoutes'
+import {
+  getSkill,
+  postSkillHandler,
+  deleteSkillHandler,
+  patchSkillHandler,
+} from "../controller/Skills.controller";
+import { Auth } from "../Utils/ValidateRoutes";
 const router = Router();
 
 /**
  * @swagger
  * components:
  *   securitySchemes:
- *     BasicAuth: 
+ *     BasicAuth:
  *       type: http
  *       scheme: bearer
  *   schemas:
  *     skillsDto:
  *         type: object
- *         properties: 
+ *         properties:
  *           title:
  *             type: string
  *             description: this is for name of the skils
  *           type:
  *             type: string
- *             description: this is for type like technical or other 
+ *             description: this is for type like technical or other
  */
 
 /**
@@ -27,7 +32,7 @@ const router = Router();
  * tags:
  *   name:  Skills Record
  *   description: Record of all skils CRUD
- * 
+ *
  */
 
 /**
@@ -45,12 +50,12 @@ const router = Router();
  *     requestBody:
  *       content:
  *         application/json:
- *           schema: 
+ *           schema:
  *             $ref: '#/components/schemas/skillsDto'
  *     responses:
  *         '200':
  *           description: A sucessfull response
- * 
+ *
  * /skills/{id}:
  *  patch:
  *     summary: used to update skilss
@@ -58,7 +63,7 @@ const router = Router();
  *     parameters:
  *       - in: path
  *         name: id
- *         schema: 
+ *         schema:
  *           type: string
  *         required: true
  *         description: this if or params with name id
@@ -78,22 +83,16 @@ const router = Router();
  *         name: id
  *         schema:
  *           type: string
- *         required: true 
+ *         required: true
  *         description: this is for id
  *     responses:
  *        '200':
  *          description: A sucessfull response
  */
 
-router
-.route('/')
-.get(getCategory)
-.post(postCategoryHandler);
+router.route("/").get(getSkill).post(postSkillHandler);
 
-
-router.route('/:id')
-.patch(patchCategoryHandler)
-.delete(deleteCategoryHandler);
+router.route("/:id").patch(patchSkillHandler).delete(deleteSkillHandler);
 
 
 

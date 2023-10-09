@@ -12,7 +12,7 @@ import * as morgan from "morgan";
 import BrandRoute from "./Routes/Brand.routes";
 // import OtakuRoute from './Routes/OtakuVoters.routes';
 
-import CustomerRoute from "./Routes/Category.routes";
+import CategoryRoute from "./Routes/Category.routes";
 // import PaymentRoute from './Routes/Payment.routes';
 
 // import ProductRoute from './Routes/Product.routes';
@@ -21,8 +21,9 @@ import CustomerRoute from "./Routes/Category.routes";
 import LocationRoute from "./Routes/Location.routes";
 import BenefitRoute from "./Routes/Benefit.routes";
 import AuthRoute from "./Routes/Auth.routes";
+import JobRoute from "./Routes/Job.routes";
 
-import CategoryRoute from "./Routes/Skills.routes";
+import SkillRoute from "./Routes/Skills.routes";
 import JobTypeRoute from "./Routes/JobType.routes";
 import TechnologyRoute from "./Routes/Technology.routes";
 import CompanyRoute from "./Routes/Company.routes";
@@ -79,14 +80,15 @@ AppDataSource.initialize()
     });
 
     app.use("/jobInfo", BrandRoute);
-    app.use("/skills", CategoryRoute);
-    app.use("/category", CustomerRoute);
+    app.use("/skills", SkillRoute);
+    app.use("/category", CategoryRoute);
     app.use("/jobtype", JobTypeRoute);
     app.use("/technology", TechnologyRoute);
     app.use("/location", LocationRoute);
     app.use("/benefit", BenefitRoute);
     app.use("/auth", AuthRoute);
     app.use("/company", CompanyRoute);
+    app.use("/job", JobRoute);
 
     // app.use('/payment',PaymentRoute);
     // app.use('/product',ProductRoute);

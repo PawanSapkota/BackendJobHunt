@@ -11,6 +11,9 @@ import { Location } from "./Location";
 import { Benefit } from "./Benefit";
 import { Company } from "./Company";
 import { Technology } from "./Technology";
+import { Category } from "./Category";
+import { Skills } from "./Skills";
+import { JobType } from "./JobType";
 
 @Entity()
 export class Job {
@@ -21,7 +24,10 @@ export class Job {
   job_name: string;
 
   @Column()
-  job_code: string;
+  job_phone: string;
+
+  @Column()
+  job_email: string;
 
   @CreateDateColumn()
   dateCreated: Date;
@@ -36,7 +42,7 @@ export class Job {
   company_name: string;
 
   @Column()
-  salary_range: number;
+  salary_range: string;
 
   @Column({ nullable: true })
   description: string;
@@ -44,14 +50,26 @@ export class Job {
   @Column()
   deadline_date: Date;
 
+  @Column()
+  experience: string;
+
   @ManyToMany(() => Location, (location) => location.jobs)
   locations: Location[];
+
+  @ManyToMany(() => Skills, (skill) => skill.jobs)
+  skills: Skills[];
+
+  @ManyToMany(() => JobType, (jobtype) => jobtype.jobs)
+  jobtypes: JobType[];
 
   @ManyToMany(() => Benefit, (benefit) => benefit.jobs)
   benefits: Benefit[];
 
   @ManyToMany(() => Technology, (technology) => technology.jobs)
   technologies: Technology[];
+
+  @ManyToMany(() => Category, (category) => category.jobs)
+  categories: Category;
 
   @ManyToOne(() => Company, (company) => company.jobs)
   companies: Company;

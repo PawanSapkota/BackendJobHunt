@@ -8,6 +8,7 @@ import {
   JoinTable,
 } from "typeorm";
 import { Company } from "./Company";
+import { Job } from "./Job";
 @Entity()
 export class JobType {
   @PrimaryGeneratedColumn("uuid")
@@ -22,8 +23,12 @@ export class JobType {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToMany(() => Company, (company) => company.jobtypes)
+  // @ManyToMany(() => Company, (company) => company.jobtypes)
+  // @JoinTable()
+  // companies: Company[];
+
+  @ManyToMany(() => Job, (job) => job.jobtypes)
   @JoinTable()
-  companies: Company[];
+  jobs: Job[];
 }
 

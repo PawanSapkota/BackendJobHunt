@@ -10,7 +10,7 @@ import {
 import { Category } from "./Category";
 import { Location } from "./Location";
 import { Technology } from "./Technology";
-import { JobType } from "./JobType";
+// import { JobType } from "./JobType";
 import { Benefit } from "./Benefit";
 import { Job } from "./Job";
 @Entity()
@@ -37,7 +37,7 @@ export class Company {
   company_email: string;
 
   @Column({ nullable: true })
-  total_employee: number;
+  total_employee: string;
 
   @Column({ nullable: true })
   description: string;
@@ -65,8 +65,8 @@ export class Company {
   })
   technologies: Technology[];
 
-  @ManyToMany(() => JobType, (jobtype) => jobtype.companies, { nullable: true })
-  jobtypes: JobType[];
+  // @ManyToMany(() => JobType, (jobtype) => jobtype.companies, { nullable: true })
+  // jobtypes: JobType[];
 
   @ManyToMany(() => Benefit, (benefit) => benefit.companies)
   benefits: Benefit[];

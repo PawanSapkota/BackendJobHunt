@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { Sales } from "./Sales";
 import { Company } from "./Company";
+import { Job } from "./Job";
 @Entity()
 export class Category {
   @PrimaryGeneratedColumn("uuid")
@@ -27,4 +28,8 @@ export class Category {
   @ManyToMany(() => Company, (company) => company.categories)
   @JoinTable()
   companies: Company[];
+
+  @ManyToMany(() => Job, (job) => job.categories)
+  @JoinTable()
+  jobs: Job[];
 }
