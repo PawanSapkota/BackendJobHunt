@@ -72,14 +72,13 @@ export const postHandlerLogin = async (
     console.log(req.body);
     let user = await AuthRepo.findOneBy({
       email: req.body.email,
-      role: "admin",
     });
 
     if (!user) {
       console.log("Error");
       return next(new AppError(404, "User Not Found"));
     }
-    console.log(user);
+    console.log(user.role);
 
     await bycrpt.compare(
       req.body.password,
