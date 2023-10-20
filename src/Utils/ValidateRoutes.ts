@@ -9,7 +9,6 @@ export const Auth =async(
     req: RequestCustom,res:Response,next: NextFunction
 )=>{
     try {
-      console.log(new Date());
       console.log(req.headers.cookie);
       let tokens = req.headers.cookie.toString().split("=")[1];
       console.log(tokens, "jhjhx");
